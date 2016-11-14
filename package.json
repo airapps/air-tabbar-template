@@ -1,0 +1,25 @@
+{
+  "name": "react-native-living",
+  "version": "1.0.0",
+  "description": "Air Drawer Template",
+  "main": "index.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airapps/air-drawer-template.git"
+  },
+  "author": "buhe",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/airapps/air-drawer-template/issues"
+  },
+  "dependencies": {
+    "@exponent/ex-navigation": "^1.7.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "react": "^15.3.1",
+    "react-native": "^0.34.1"
+  },
+  "homepage": "https://github.com/airapps/air-drawer-template#readme"
+}
