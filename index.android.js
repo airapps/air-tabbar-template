@@ -11,12 +11,15 @@ import {
   Dimensions,
   ScrollView,
   TouchableHighlight,
+  AppRegistry
 } from 'react-native';
 import {
+  StackNavigation,
   TabNavigation,
-  TabNavigationItem,
+  TabNavigationItem as TabItem,
+  NavigationProvider
 } from '@exponent/ex-navigation';
-import { Ionicons } from '@exponent/vector-icons';
+// import { Ionicons } from '@exponent/vector-icons';
 
 import Router from './screens';
 
@@ -31,63 +34,50 @@ export default class TabNavigationExample extends Component {
     },
   };
 
-  _goToFirstTab = () => {
-    this.props.navigation.performAction(({ tabs, stacks }) => {
-      tabs('tab-navigation').jumpToTab('first');
-    });
-  };
-
-  _goToSecondTab = () => {
-    this.props.navigation.performAction(({ tabs, stacks }) => {
-      tabs('tab-navigation').jumpToTab('second');
-    });
-  };
-
   render() {
     return (
-      <View style={styles.container}>
-        <TabNavigation
-          id="tab-navigation"
-          navigatorUID="tab-navigation"
-          initialTab="first">
-          <TabNavigationItem
-            id="first"
-            title="First"
+      <NavigationProvider router={Router}>
+        <View style={styles.container}>
+          <TabNavigation
+          id="main"
+          navigatorUID="main"
+          initialTab="home">
+          <TabItem
+            id="home"
+            title="Home"
             selectedStyle={styles.selectedTab}
-            renderTitle={this._renderTitle}
-            renderIcon={(isSelected) => <Ionicons name="ios-boat-outline" size={24} color={getColor(isSelected)} />}>
+            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
             <StackNavigation
-                id="home"
-                navigatorUID="home"
-                initialRoute={Router.getRoute('home')}
+              id="home"
+              navigatorUID="home"
+              initialRoute={Router.getRoute('home')}
             />
-          </TabNavigationItem>
-          <TabNavigationItem
-            id="second"
-            title="Second"
+          </TabItem>
+
+          <TabItem
+            id="posts"
+            title="Posts"
             selectedStyle={styles.selectedTab}
-            renderTitle={this._renderTitle}
-            renderIcon={(isSelected) => <Ionicons name="ios-bulb-outline" size={24} color={getColor(isSelected)} />}>
-             <StackNavigation
-                id="home"
-                navigatorUID="home"
-                initialRoute={Router.getRoute('home')}
+            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
+            <StackNavigation
+              id="posts"
+              initialRoute={Router.getRoute('about')}
             />
-          </TabNavigationItem>
-          <TabNavigationItem
-            id="third"
-            title="Third"
+          </TabItem>
+
+          <TabItem
+            id="profile"
+            title="Profile"
             selectedStyle={styles.selectedTab}
-            renderTitle={this._renderTitle}
-            renderIcon={(isSelected) => <Ionicons name="ios-bowtie-outline" size={24} color={getColor(isSelected)} />}>
-             <StackNavigation
-                id="home"
-                navigatorUID="home"
-                initialRoute={Router.getRoute('about')}
+            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
+            <StackNavigation
+              id="profile"
+              initialRoute={Router.getRoute('about')}
             />
-          </TabNavigationItem>
+          </TabItem>
         </TabNavigation>
-      </View>
+        </View>
+      </NavigationProvider>
     );
   }
   _renderTitle = (isSelected, title) => {
