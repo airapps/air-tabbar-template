@@ -19,7 +19,7 @@ import {
   TabNavigationItem as TabItem,
   NavigationProvider
 } from '@exponent/ex-navigation';
-// import { Ionicons } from '@exponent/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Router from './screens';
 
@@ -46,7 +46,7 @@ export default class TabNavigationExample extends Component {
             id="home"
             title="Home"
             selectedStyle={styles.selectedTab}
-            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
+            renderIcon={(isSelected) => <Ionicons name="ios-boat-outline" size={24} color={getColor(isSelected)} />}>
             <StackNavigation
               id="home"
               navigatorUID="home"
@@ -58,7 +58,7 @@ export default class TabNavigationExample extends Component {
             id="posts"
             title="Posts"
             selectedStyle={styles.selectedTab}
-            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
+            renderIcon={(isSelected) => <Ionicons name="ios-bulb-outline" size={24} color={getColor(isSelected)} />}>
             <StackNavigation
               id="posts"
               initialRoute={Router.getRoute('about')}
@@ -69,7 +69,7 @@ export default class TabNavigationExample extends Component {
             id="profile"
             title="Profile"
             selectedStyle={styles.selectedTab}
-            renderIcon={(isSelected) => <Image source={{uri:'http://www.freeiconspng.com/uploads/home-icon-png-home-house-icon-24.png'}} /> }>
+            renderIcon={(isSelected) => <Ionicons name="ios-bowtie-outline" size={24} color={getColor(isSelected)} />}>
             <StackNavigation
               id="profile"
               initialRoute={Router.getRoute('about')}
